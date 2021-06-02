@@ -1,6 +1,10 @@
 package Mini_Project_1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class PhoneBook {
 	private static Scanner scan = new Scanner(System.in);
@@ -41,12 +45,9 @@ public class PhoneBook {
 
 	private static void PersonalInfoList() {
 		System.out.println("<1.리스트>");
-
-		PhoneBookDAO dao = new PhoneBookDAOImpl();
-
-		/*
-		PhoneBookVO vo = dao.get(Long.valueOf());
-
+		List listInfo = new ArrayList();
+		Iterator iter = listInfo.iterator();
+		
 		if (vo != null) { // 검색
 			System.out.print(vo.getId() + ".");
 			System.out.print(vo.getName() + " ");
@@ -56,9 +57,7 @@ public class PhoneBook {
 		} else { // Not Found
 			System.out.println("Not Found");
 		}
-		 *
-		 */
-		//	List 받아오 출력
+		 
 	}
 
 	private static void CreatePhoneNum() {
@@ -88,7 +87,7 @@ public class PhoneBook {
 		System.out.println(">번호: ");
 		int Num = scan.nextInt();
 
-		PhoneBookDAO dao = new PhoneBookDAOlmpl();
+		PhoneBookDAO dao = new PhoneBookDAOImpl();
 		boolean success = dao.delete(Long.valueOf(Num));
 		System.out.println("[삭제되었습니다.]" + success);
 	}
