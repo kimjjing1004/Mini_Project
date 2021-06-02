@@ -1,14 +1,24 @@
 package Mini_Project_1;
 
-public class PhoneNum {
+public class PhoneBookVO {
+	private Long id;		//	PK
 	private String name;
 	private String hp;
 	private String tel;
 	
-	public PhoneNum(String name, String hp, String tel) {
+	public PhoneBookVO(Long id, String name, String hp, String tel) {
+		this.id = id;	
 		this.name = name;
 		this.hp = hp;
 		this.tel = tel;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -33,8 +43,6 @@ public class PhoneNum {
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	}
-	
-	
+	}	
 
 }
