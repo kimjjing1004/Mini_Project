@@ -1,10 +1,6 @@
 package Mini_Project_1;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.text.html.HTMLDocument.Iterator;
 
 public class PhoneBook {
 	private static Scanner scan = new Scanner(System.in);
@@ -45,8 +41,14 @@ public class PhoneBook {
 
 	private static void PersonalInfoList() {
 		System.out.println("<1.리스트>");
-		List listInfo = new ArrayList();
-		Iterator iter = listInfo.iterator();
+		PhoneBookDAO dao = new PhoneBookDAO();
+		PhoneBookVO vo = new PhoneBookVO();
+		PhoneBookVO = dao.get(Long id);
+		lterator iter = list.iterator();
+		while(iter.hasNext()) {
+			Object obj=olter.next();
+			dto=(MemberDTO)
+		}
 		
 		if (vo != null) { // 검색
 			System.out.print(vo.getId() + ".");
