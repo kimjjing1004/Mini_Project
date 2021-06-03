@@ -43,6 +43,12 @@ public class PhoneBookVO {
 
 	public void setTel(String tel) {
 		this.tel = tel;
-	}	
+	}
 
+	@Override
+	public String toString() {
+		return "PhoneBookVO [id=" + id + ", name=" + name + ", hp=" + hp + ", tel=" + tel + "]"; 
+	}
+	
+	
 }

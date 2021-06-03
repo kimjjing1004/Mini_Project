@@ -15,7 +15,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		Connection conn = null;
 		try {
 			//	드라이버 로드
-			Class.forName("oralce.jdbc.driver.OracleDriver");
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			String dbname = "jdbc:oracle:thin:@localhost:1521:xe";
 			conn = DriverManager.getConnection(dbname,
 					"C##BITUSER",
@@ -41,8 +41,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			stmt = conn.createStatement();
 			
 			// 쿼리
-			String sql = "SELECT PhoneBook_id, PhoneBook_name, PhoneBook_hp, PhoneBook_tel" +
-						"FROM PhoneBook";
+			String sql = "SELECT id, name, hp, tel" +
+						" FROM PHONE_BOOK";
 			
 			// 쿼리 실행
 			rs = stmt.executeQuery(sql);
@@ -81,8 +81,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		List<PhoneBookVO> list = new ArrayList<>();
 		
-		String sql = "SELECT PhoneBook_id, PhoneBook_name, PhoneBook_hp, PhoneBook_tel FROM PhoneBook " +
-					" WHERE PhoneBook_name LIKE ?";
+		String sql = "SELECT id, name, hp, tel FROM PHONE_BOOK " +
+					" WHERE name LIKE ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -94,10 +94,10 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 			
 			//	변환
 			while(rs.next()) {
-				Long id = rs.getLong("PhoneBook_id");
-				String name = rs.getString("PhoneBook_name");
-				String hp = rs.getString("PhoneBook_hp");
-				String tel = rs.getString("PhoneBook_tel");
+				Long id = rs.getLong("id");
+				String name = rs.getString("name");
+				String hp = rs.getString("hp");
+				String tel = rs.getString("tel");
 				
 				//	VO 객체
 				PhoneBookVO vo = new PhoneBookVO(id, name, hp, tel);
@@ -127,8 +127,8 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		try {
 			conn = getConnection();
-			String sql = "SELECT PhoneBook_id, PhoneBook_name, PhoneBook_hp, PhoneBook_tel FROM PhoneBook " +
-					" WHERE PhoneBook_id=?";
+			String sql = "SELECT id, name, hp, tel FROM PHONE_BOOK " +
+					" WHERE id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, id);
 			
@@ -168,7 +168,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		try {
 			conn = getConnection();
 			//	실행 계획
-			String sql = "INSERT INTO PhoneBook VALUES(SEQ_PHONE_BOOK_PK.NEXTVAL, ?, ?, ?)";
+			String sql = "INSERT INTO PHONE_BOOK VALUES(SEQ_PHONE_BOOK_PK.NEXTVAL, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			//	파라미터 바인딩
 			pstmt.setString(1,  vo.getName());
@@ -200,7 +200,7 @@ public class PhoneBookDAOImpl implements PhoneBookDAO {
 		
 		try {
 			conn = getConnection();
-			String sql = "DELETE FROM PhoneBooK WHERE PhoneBook_id=?";
+			String sql = "DELETE FROM PHONE_BOOK WHERE id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setLong(1, id);
 			
